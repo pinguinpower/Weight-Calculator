@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/static/css/main.9d715d3e.css",
-    "main.js": "/static/js/main.53c63223.js",
-    "index.html": "/index.html",
-    "main.9d715d3e.css.map": "/static/css/main.9d715d3e.css.map",
-    "main.53c63223.js.map": "/static/js/main.53c63223.js.map"
+    "main.css": "/Weight-Calculator/static/css/main.9d715d3e.css",
+    "main.js": "/Weight-Calculator/static/js/main.53c63223.js",
+    "index.html": "/Weight-Calculator/index.html",
+    "main.9d715d3e.css.map": "/Weight-Calculator/static/css/main.9d715d3e.css.map",
+    "main.53c63223.js.map": "/Weight-Calculator/static/js/main.53c63223.js.map"
   },
   "entrypoints": [
     "static/css/main.9d715d3e.css",
