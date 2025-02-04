@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
 
 export const BasketCalculation = () => {
   const [basketWeight, setBasketWeight] = useState<number>(5); // Default berat keranjang 5 kg
@@ -19,73 +17,67 @@ export const BasketCalculation = () => {
     }
   };
 
-  const handleReset = () => {
-    setHistory([]);
-    setBasketWeight(5);
-    setTotalInputBasket(0);
-  };
-
   return (
-    <div className="p-4 flex flex-col items-center justify-center space-y-4">
-      <h1 className="text-2xl font-bold">Basket Calculation</h1>
+    <div className="p-4">
+      <h2 className="text-2xl font-bold mb-4">Basket Weight Calculator</h2>
       
-      <div className="w-full max-w-md space-y-4">
+      <div className="space-y-4">
         <div>
-          <label htmlFor="basketWeight" className="block mb-1">
-            Input Basket Weight (kg)
-          </label>
-          <Input
-            id="basketWeight"
+          <label className="block text-sm font-medium text-gray-700">Berat Keranjang (kg)</label>
+          <input
             type="number"
             value={basketWeight}
             onChange={(e) => setBasketWeight(Number(e.target.value))}
-            min="1"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           />
         </div>
 
         <div>
-          <label htmlFor="totalInputBasket" className="block mb-1">
-            Total Input Basket
-          </label>
-          <Input
-            id="totalInputBasket"
+          <label className="block text-sm font-medium text-gray-700">Jumlah Keranjang</label>
+          <input
             type="number"
             value={totalInputBasket}
             onChange={(e) => setTotalInputBasket(Number(e.target.value))}
-            min="0"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
           />
         </div>
+
+        <button
+          onClick={handleInput}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+        >
+          Tambah ke History
+        </button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full max-w-4xl">
-        <div className="border p-4 rounded">
-          <p>Total Baskets</p>
-          <p className="text-xl font-bold">{totalBaskets} baskets</p>
-        </div>
-        <div className="border p-4 rounded">
-          <p>Total Basket Weight</p>
-          <p className="text-xl font-bold">{totalBasketWeight} kg</p>
-        </div>
-        <div className="border p-4 rounded">
-          <p>Average Weight per Basket</p>
-          <p className="text-xl font-bold">{averageWeightPerBasket.toFixed(2)} kg</p>
-        </div>
-      </div>
-
-      <div className="flex gap-4">
-        <Button onClick={handleInput}>Input</Button>
-        <Button onClick={handleReset}>Reset</Button>
-      </div>
-
-      <div className="w-full max-w-md">
-        <h2 className="text-lg font-bold mb-2">History</h2>
-        <ul className="list-disc pl-5 space-y-2">
+      <div className="mt-8">
+        <h3 className="text-xl font-semibold mb-4">History</h3>
+        <div className="space-y-2">
           {history.map((entry, index) => (
-            <li key={index}>
-              Basket Weight: {entry.basketWeight} kg, Total Baskets: {entry.totalInputBasket}
-            </li>
+            <div key={index} className="p-3 bg-gray-100 rounded">
+              <p>Berat Keranjang: {entry.basketWeight} kg</p>
+              <p>Jumlah Keranjang: {entry.totalInputBasket}</p>
+            </div>
           ))}
-        </ul>
+        </div>
+      </div>
+
+      <div className="mt-8 p-4 bg-blue-50 rounded">
+        <h3 className="text-xl font-semibold mb-4">Statistik</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div>
+            <p className="text-sm text-gray-600">Total Keranjang</p>
+            <p className="text-2xl font-bold">{totalBaskets}</p>
+          </div>
+          <div>
+            <p className="text-sm text-gray-600">Total Berat</p>
+            <p className="text-2xl font-bold">{totalBasketWeight} kg</p>
+          </div>
+          <div>
+            <p className="text-sm text-gray-600">Rata-rata Berat per Keranjang</p>
+            <p className="text-2xl font-bold">{averageWeightPerBasket.toFixed(2)} kg</p>
+          </div>
+        </div>
       </div>
     </div>
   );
